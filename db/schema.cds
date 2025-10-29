@@ -5,6 +5,12 @@ using {
     managed
 } from '@sap/cds/common';
 
+
+@assert.unique: {ruleTemplate: [
+    objectType,
+    ruleType,
+    value
+]}
 entity BaseRule : cuid, managed {
     description : String(100);
     objectType  : String(10);

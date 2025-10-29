@@ -99,7 +99,7 @@ sap.ui.define(
 
                     // FETCH THE CSRF TOKEN
                     // We make a HEAD or GET request to the service root to get the token (might not be needed in prod?)
-                    const tokenResponse = await fetch("/codeRuleService/", { // Target your service root
+                    const tokenResponse = await fetch("/baseRuleService/", { // Target your service root
                         method: "HEAD",
                         headers: {
                             "X-CSRF-Token": "Fetch"
@@ -116,7 +116,7 @@ sap.ui.define(
                     }
 
 
-                    const response = await fetch("/codeRuleService/fileUploadBaseRules", {
+                    const response = await fetch("/baseRuleService/fileUploadBaseRules", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
@@ -149,7 +149,8 @@ sap.ui.define(
             },
 
             onCancelPressed: function () {
-                const oFileUploader = sap.ui.getCore().byId("rulecsvUplaoder");
+                console.log("Cancelling..");
+                const oFileUploader = sap.ui.getCore().byId("rulecsvUploader");
                 handler._fileUploadDialog.close();
                 oFileUploader.clear();
                 // Also reset the upload button

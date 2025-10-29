@@ -78,6 +78,14 @@ modules:
       - baseruleapp.zip
       name: baseruleapp
       target-path: resources/
+    - artifacts:
+      - userruleapp.zip
+      name: userruleapp
+      target-path: resources/
+    - artifacts:
+      - userrulesapp.zip
+      name: userrulesapp
+      target-path: resources/
 - name: usercrud
   type: html5
   path: app/usercrud
@@ -121,6 +129,16 @@ modules:
 - name: baseruleapp
   type: html5
   path: app/baseruleapp
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: userrulesapp
+  type: html5
+  path: app/userrulesapp
   build-parameters:
     build-result: dist
     builder: custom

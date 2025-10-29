@@ -20,7 +20,9 @@
     "undeploy": "cf undeploy codeReviewRules --delete-services --delete-service-keys --delete-service-brokers",
     "build": "rimraf resources mta_archives && mbt build --mtar archive",
     "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
-    "watch-baseruleapp": "cds watch --open baseruleapp/index.html?sap-ui-xx-viewCache=false --livereload false"
+    "watch-baseruleapp": "cds watch --open baseruleapp/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-userruleapp": "cds watch --open userruleapp/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-userrulesapp": "cds watch --open userrulesapp/index.html?sap-ui-xx-viewCache=false --livereload false"
   },
   "private": true,
   "cds": {
@@ -43,6 +45,7 @@
     "app/*"
   ],
   "sapux": [
-    "app/baseruleapp"
+    "app/baseruleapp",
+    "app/userrulesapp"
   ]
 }

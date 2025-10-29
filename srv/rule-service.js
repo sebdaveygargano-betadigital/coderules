@@ -4,6 +4,7 @@ module.exports = (srv) => {
     // Get the entities from your service definition (the projections)
     const { UserRules, BaseRules, CodeUsers } = srv.entities;
 
+
     /**
      * Get all rules that are currently active for a user.
      * (Current date is between effectiveDate and endDate)
@@ -81,53 +82,6 @@ module.exports = (srv) => {
         return `Removed ${deleteResult} overdue rules for user ${userId}.`;
     });
 
-    srv.on('fileUploadBaseRules', async (req) => {
-        const { rules: rulesJsonString } = req.data;
-        if (!rulesJsonString) {
-            return req.error(400, 'No rules payload found.');
-        }
 
-        // We must run this in a transaction
-        const tx = cds.tx(req);
-        let rules;
-
-        try {
-            rules = JSON.parse(rulesJsonString);
-        } catch (e) {
-            return req.error(400, `Invalid JSON payload: ${e.message}`);
-        }
-
-        if (!Array.isArray(rules) || rules.length === 0) {
-            return req.error(400, 'Payload must be a non-empty array of rules.');
-        }
-
-        // We are targeting the schema entity 'BaseRule' directly to bypass
-        // the 'BaseRules' service projection, which is draft-enabled.
-        // A bulk upload should almost never create drafts.
-        try {
-
-            // Prepare entries, adding managed data (like 'createdBy')
-            // 'cuid' will add the ID automatically
-            const managed = req.user ? { createdBy: req.user.id } : {};
-            const entriesToCreate = rules.map(rule => ({
-                ...rule, // Assumes CSV headers match entity fields (description, objectType, ruleType, value)
-                ...managed
-            }));
-
-            // This single INSERT will be executed as a batch operation
-            // within the 'tx' transaction. If one row fails, all fail.
-            await tx.run(
-                INSERT.into(BaseRules).entries(entriesToCreate)
-            );
-
-            // If we are here, the insert was successful
-            return `Successfully uploaded ${entriesToCreate.length} Base Rules.`;
-
-        } catch (err) {
-            // req.error() will automatically trigger a rollback on the transaction
-            return req.error(500, `Failed to upload rules: ${err.message}`);
-        }
-
-    });
 
 };
