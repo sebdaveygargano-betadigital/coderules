@@ -1,7 +1,7 @@
 {
   "_version": "1.76.0",
   "sap.app": {
-    "id": "baserulelist",
+    "id": "baseruleapp",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
@@ -13,11 +13,11 @@
     "sourceTemplate": {
       "id": "@sap/generator-fiori:lrop",
       "version": "1.19.3",
-      "toolsId": "57329f7e-5385-4a4a-b1fa-dd08be976a7c"
+      "toolsId": "89134afb-3a08-46be-a9ae-5cc76c451671"
     },
     "dataSources": {
       "mainService": {
-        "uri": "/codeRuleService/",
+        "uri": "/baseRuleService/",
         "type": "OData",
         "settings": {
           "annotations": [],
@@ -61,7 +61,7 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "baserulelist.i18n.i18n"
+          "bundleName": "baseruleapp.i18n.i18n"
         }
       },
       "": {
@@ -85,7 +85,7 @@
       "config": {
         "flexibleColumnLayout": {
           "defaultTwoColumnLayoutType": "TwoColumnsMidExpanded",
-          "defaultThreeColumnLayoutType": "ThreeColumnsMidExpanded"
+          "defaultThreeColumnLayoutType": "ThreeColumnsEndExpanded"
         },
         "routerClass": "sap.f.routing.Router"
       },
@@ -128,12 +128,12 @@
                     "type": "ResponsiveTable"
                   },
                   "actions": {
-                    "createFromCsv": {
-                      "press": "baserulelist.ext.controller.CSV_Uploader.uploadCSV",
+                    "ruleCsvUpload": {
+                      "press": "baseruleapp.ext.controller.CSV_Uploader.uploadCSV",
                       "visible": true,
                       "enabled": true,
                       "requiresSelection": false,
-                      "text": "Import from CSV"
+                      "text": "Import Rules (CSV)"
                     }
                   }
                 }

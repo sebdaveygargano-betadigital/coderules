@@ -3,7 +3,7 @@ sap.ui.define(
     function (Component) {
         "use strict";
 
-        return Component.extend("baserulelist.Component", {
+        return Component.extend("baseruleapp.Component", {
             metadata: {
                 manifest: "json"
             }

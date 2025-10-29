@@ -17,12 +17,10 @@
   },
   "scripts": {
     "start": "cds-serve",
-    "watch-usercrud": "cds watch --open usercrud/index.html?sap-ui-xx-viewCache=false --livereload false",
     "undeploy": "cf undeploy codeReviewRules --delete-services --delete-service-keys --delete-service-brokers",
     "build": "rimraf resources mta_archives && mbt build --mtar archive",
     "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
-    "watch-baserulelist": "cds watch --open baserulelist/index.html?sap-ui-xx-viewCache=false --livereload false",
-    "watch-codeusersapp": "cds watch --open codeusersapp/index.html?sap-ui-xx-viewCache=false --livereload false"
+    "watch-baseruleapp": "cds watch --open baseruleapp/index.html?sap-ui-xx-viewCache=false --livereload false"
   },
   "private": true,
   "cds": {
@@ -45,8 +43,6 @@
     "app/*"
   ],
   "sapux": [
-    "app/usercrud",
-    "app/baserulelist",
-    "app/codeusersapp"
+    "app/baseruleapp"
   ]
 }

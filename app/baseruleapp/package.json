@@ -1,7 +1,7 @@
 {
-  "name": "baserulelist",
+  "name": "baseruleapp",
   "version": "0.0.1",
-  "description": "An SAP Fiori application.",
+  "description": "Create new base rule templates",
   "keywords": [
     "ui5",
     "openui5",

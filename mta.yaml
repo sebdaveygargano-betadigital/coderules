@@ -70,6 +70,14 @@ modules:
       - codeusersapp.zip
       name: codeusersapp
       target-path: resources/
+    - artifacts:
+      - userrules.zip
+      name: userrules
+      target-path: resources/
+    - artifacts:
+      - baseruleapp.zip
+      name: baseruleapp
+      target-path: resources/
 - name: usercrud
   type: html5
   path: app/usercrud
@@ -93,6 +101,26 @@ modules:
 - name: codeusersapp
   type: html5
   path: app/codeusersapp
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: userrules
+  type: html5
+  path: app/userrules
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: baseruleapp
+  type: html5
+  path: app/baseruleapp
   build-parameters:
     build-result: dist
     builder: custom

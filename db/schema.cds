@@ -12,11 +12,12 @@ entity BaseRule : cuid, managed {
     value       : String(50);
 }
 
-entity UserRule : cuid, managed {
-    baseRule      : Association to one BaseRule;
-    effectiveDate : Date;
-    endDate       : Date;
-    user          : Association to one CodeUser;
+entity UserRule : managed {
+    key ID            : UUID;
+        baseRule      : Association to one BaseRule;
+        effectiveDate : Date;
+        endDate       : Date;
+        user          : Association to one CodeUser;
 }
 
 entity CodeUser : managed {

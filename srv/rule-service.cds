@@ -1,13 +1,16 @@
 using {codeRules} from '../db/schema';
 
 service RuleService @(path: '/codeRuleService') {
-    @odata.draft.enabled
     entity BaseRules as projection on codeRules.BaseRule;
 
     @odata.draft.enabled
     entity CodeUsers as
         projection on codeRules.CodeUser {
             ID,
+            modifiedAt,
+            createdBy,
+            createdAt,
+            modifiedBy,
             rules
         };
 
