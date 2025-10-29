@@ -1,1 +1,0 @@
-using RuleService as service from '../../srv/rule-service';
