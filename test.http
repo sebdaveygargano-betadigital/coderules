@@ -1,0 +1,7 @@
+###
+POST http://localhost:4004/codeRuleService/checkForOverdueRules
+Content-Type: application/json
+
+{
+    "userId": "1"
+}

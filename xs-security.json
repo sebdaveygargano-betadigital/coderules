@@ -1,0 +1,39 @@
+{
+  "xsappname": "code-review-rules",
+  "tenant-mode": "dedicated",
+  "description": "Security for Code Review Rule App",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.RuleAdmin",
+      "description": "Manage (CRUD) code review rules",
+      "grant-as-authority-to-apps": []
+    },
+    {
+      "name": "$XSAPPNAME.RuleReader",
+      "description": "Read-only access to code review rules",
+      "grant-as-authority-to-apps": []
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "Admin",
+      "description": "Role for managing rules",
+      "scope-references": [
+        "$XSAPPNAME.RuleAdmin"
+      ]
+    },
+    {
+      "name": "Reader",
+      "description": "Role for ABAP system (read-only)",
+      "scope-references": [
+        "$XSAPPNAME.RuleReader"
+      ]
+    }
+  ],
+  "attributes": [],
+  "oauth2-configuration": {
+    "redirect-uris": [
+      "https://port5000-workspaces-ws-q3mog.ap10.applicationstudio.cloud.sap/login/callback"
+    ]
+  }
+}

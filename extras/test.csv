@@ -1,0 +1,4 @@
+description,objectType,ruleType,value
+Max line count for methods,METH,LINE_COUN,100
+Max line width for functions,FUNC,LINE_WIDTH,120
+Disallowed command in reports,REPS,COMMAND,DELETE
