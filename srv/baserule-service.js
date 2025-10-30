@@ -4,6 +4,17 @@ const { SELECT } = require('@sap/cds/lib/ql/cds-ql');
 module.exports = (srv) => {
     const { BaseRules } = srv.entities;
 
+    srv.before('*', async (req) => {
+        // This logs the event (e.g., CREATE, READ, uploadBaseRules) and the target entity
+        console.log(`[AUTH_CHECK] Incoming request for event: ${req.event}, target: ${req.target ? req.target.name : 'unknown'}`);
+        if (req.user) {
+            console.log("User credentials detected on HTTP request. See below:\nID: ", req.user.id, "\nRoles: ", req.user.roles, "\nAttr: ", req.user.attr);
+        }
+        else {
+            console.log("Unauthenticated request received...");
+        }
+    });
+
 
 
     srv.before('CREATE', 'BaseRules', async (req) => {

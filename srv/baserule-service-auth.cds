@@ -1,13 +1,20 @@
 using {BaseRuleService} from './baserule-service';
 
 annotate BaseRuleService with @(restrict: [
-                                           /*
-                                           {
-                                               grant: '*',
-                                               to   : 'RuleAdmin'
-                                           },*/
+    {
+        grant: '*',
+        to   : 'RuleAdmin'
+    },
+    {
+        grant: [
+            'CREATE',
+            'READ'
+        ],
+        to   : 'RuleReader'
+    },
 
-                                          {
-    grant: '*',
-    to   : 'authenticated-user'
-}]);
+    {
+        grant: 'READ',
+        to   : 'authenticated-user'
+    }
+]);

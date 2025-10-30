@@ -4,6 +4,17 @@ module.exports = (srv) => {
     // Get the entities from your service definition (the projections)
     const { UserRules, BaseRules, CodeUsers } = srv.entities;
 
+    srv.before('*', async (req) => {
+        // This logs the event (e.g., CREATE, READ, uploadBaseRules) and the target entity
+        console.log(`[AUTH_CHECK] Incoming request for event: ${req.event}, target: ${req.target ? req.target.name : 'unknown'}`);
+        if (req.user) {
+            console.log("User credentials detected on HTTP request. See below:\n", req.user);
+        }
+        else {
+            console.log("Unauthenticated request received...");
+        }
+    });
+
 
     /**
      * Get all rules that are currently active for a user.
