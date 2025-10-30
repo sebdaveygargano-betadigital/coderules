@@ -12,6 +12,11 @@
       "name": "$XSAPPNAME.RuleReader",
       "description": "Read-only access to code review rules",
       "grant-as-authority-to-apps": []
+    },
+    {
+      "name": "$XSAPPNAME.RuleCreator",
+      "description": "May read all rules, and create rule templates",
+      "grant-as-authority-to-apps": []
     }
   ],
   "role-templates": [
@@ -27,6 +32,13 @@
       "description": "Role for ABAP system (read-only)",
       "scope-references": [
         "$XSAPPNAME.RuleReader"
+      ]
+    },
+    {
+      "name": "Creator",
+      "description": "Role for ABAP system",
+      "scope-references": [
+        "$XSAPPNAME.RuleCreator"
       ]
     }
   ],

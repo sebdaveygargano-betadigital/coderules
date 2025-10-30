@@ -3,15 +3,15 @@
   "routes": [
     {
       "source": "^/baseruleapp/(.*)$",
-      "target": "$1",
-      "localDir": "../baseruleapp/webapp",
+      "target": "/$1",
+      "destination": "baseruleapp",
       "authenticationType": "xsuaa",
       "csrfProtection": false
     },
     {
       "source": "^/userrulesapp/(.*)$",
-      "target": "$1",
-      "localDir": "../userrulesapp/webapp",
+      "target": "/$1",
+      "destination": "userrulesapp",
       "authenticationType": "xsuaa",
       "csrfProtection": false
     },
@@ -34,11 +34,13 @@
       "authenticationType": "xsuaa",
       "csrfProtection": true
     },
-    {"source": "^/baseRuleService/(.*)$",
+    {
+      "source": "^/baseRuleService/(.*)$",
       "target": "/baseRuleService/$1",
       "destination": "srv-api",
       "authenticationType": "xsuaa",
-      "csrfProtection": true},
+      "csrfProtection": true
+    },
     {
       "source": "^/(.*)$",
       "target": "$1",

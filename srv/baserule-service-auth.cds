@@ -8,13 +8,19 @@ annotate BaseRuleService with @(restrict: [
     {
         grant: [
             'CREATE',
+            'UPDATE',
             'READ'
         ],
-        to   : 'RuleReader'
+        to   : 'RuleCreator'
     },
 
     {
         grant: 'READ',
-        to   : 'authenticated-user'
+        to   : 'RuleReader'
+        
+    },
+    {
+        grant: 'READ',
+        to : 'authenticated-user'
     }
 ]);
