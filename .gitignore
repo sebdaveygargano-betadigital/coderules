@@ -35,3 +35,17 @@ mta_archives/
 
 # auto generated wildcard
 db/.env
+
+General
+
+.DS_Store
+node_modules/
+mta_archives/
+resources/
+gen/
+
+Fiori build output
+
+app//webapp/Component-preload.js
+
+dist/

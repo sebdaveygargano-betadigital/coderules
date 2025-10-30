@@ -8,6 +8,9 @@ annotate RuleService with @(restrict: [
 
     {
         grant: 'READ',
-        to   : 'authenticated-user, RuleReader'
+        to   : [
+            'authenticated-user',
+            'RuleReader'
+        ]
     }
 ]);
