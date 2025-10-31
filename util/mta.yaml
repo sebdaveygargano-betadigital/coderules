@@ -106,7 +106,7 @@ modules:
       supported-platforms: []
 
 resources:
-  # XSUAA Service
+  # XSUAA Service pointing to your existing instance
   - name: code-review-rules-auth
     type: org.cloudfoundry.managed-service
     parameters:
@@ -118,7 +118,7 @@ resources:
         xsappname: code-review-rules
         oauth2-configuration:
           redirect-uris:
-            - https://*.cfapps.*.hana.ondemand.com/login/callback
+            - https://*.cfapps.*.hana.ondemand.com/login/callback # Generic callback
             - https://*.${default-domain}/login/callback
             - https://*~{app-api/app-uri}/**
         role-collections:
@@ -134,6 +134,12 @@ resources:
             description: "generated"
             role-template-references:
               - "$XSAPPNAME.RuleCreator"
+          - name: "RuleM2M (code-review-rules ${org}-${space})"
+            description: "generated"
+            role-template-references:
+              - "$XSAPPNAME.RuleM2m"
+    requires:
+      - name: app-api
 
   # HDI Container (HANA)
   - name: code-review-rules-db

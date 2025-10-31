@@ -133,6 +133,10 @@ resources:
             description: "generated"
             role-template-references:
               - "$XSAPPNAME.RuleCreator"
+          - name: "RuleM2M (code-review-rules ${org}-${space})"
+            description: "generated"
+            role-template-references:
+              - "$XSAPPNAME.RuleM2m"
     requires:
       - name: app-api
 
