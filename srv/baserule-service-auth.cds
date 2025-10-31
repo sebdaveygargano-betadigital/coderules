@@ -1,6 +1,7 @@
 using {BaseRuleService} from './baserule-service';
 
-annotate BaseRuleService with @(restrict: [
+
+annotate BaseRuleService.BaseRules with @(restrict: [
     {
         grant: '*',
         to   : 'RuleAdmin'
@@ -17,10 +18,21 @@ annotate BaseRuleService with @(restrict: [
     {
         grant: 'READ',
         to   : 'RuleReader'
-        
+
     },
     {
         grant: 'READ',
-        to : 'authenticated-user'
+        to   : 'authenticated-user'
     }
+]);
+
+
+// ---------------------------
+// ACTION: fileUploadBaseRules
+// ---------------------------
+
+// Grant access to RuleAdmin and RuleCreator only
+annotate BaseRuleService.fileUploadBaseRules with @(requires: [
+    'RuleAdmin',
+    'RuleCreator'
 ]);
