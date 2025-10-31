@@ -129,6 +129,10 @@ resources:
             description: "generated"
             role-template-references:
               - "$XSAPPNAME.RuleReader"
+          - name: "RuleCreator (code-review-rules ${org}-${space})"
+            description: "generated"
+            role-template-references:
+              - "$XSAPPNAME.RuleCreator"
     requires:
       - name: app-api
 
