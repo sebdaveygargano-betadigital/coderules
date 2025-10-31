@@ -10,14 +10,23 @@
     },
     {
       "name": "$XSAPPNAME.RuleReader",
-      "description": "Read-only access to code review rules",
-      "grant-as-authority-to-apps": []
+      "description": "Read-only access to code review rules"
     },
     {
       "name": "$XSAPPNAME.RuleCreator",
       "description": "May read all rules, and create rule templates",
       "grant-as-authority-to-apps": []
+    },
+    {
+      "name": "$XSAPPNAME.RuleM2M",
+      "description": "M2M authorisation scope.",
+      "grant-as-authority-to-apps": [
+        "sb-code-review-rules!t76906"
+      ]
     }
+  ],
+  "authorities": [
+    "$XSAPPNAME.RuleM2M"
   ],
   "role-templates": [
     {
@@ -29,16 +38,23 @@
     },
     {
       "name": "Reader",
-      "description": "Role for ABAP system (read-only)",
+      "description": "Read only role",
       "scope-references": [
         "$XSAPPNAME.RuleReader"
       ]
     },
     {
       "name": "Creator",
-      "description": "Role for ABAP system",
+      "description": "Read and write role",
       "scope-references": [
         "$XSAPPNAME.RuleCreator"
+      ]
+    },
+    {
+      "name": "M2M",
+      "description": "Machine access via client credentials.",
+      "scope-references": [
+        "$XSAPPNAME.RuleM2M"
       ]
     }
   ],

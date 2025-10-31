@@ -10,7 +10,8 @@ annotate RuleService.CodeUsers with @(restrict: [
         grant: 'READ',
         to   : [
             'authenticated-user',
-            'RuleReader'
+            'RuleReader',
+            'RuleM2M'
         ]
     }
 ]);
@@ -29,7 +30,8 @@ annotate RuleService.UserRules with @(restrict: [
         grant: 'READ',
         to   : [
             'authenticated-user',
-            'RuleReader'
+            'RuleReader',
+            'RuleM2M'
         ]
     }
 ]);
@@ -40,7 +42,8 @@ annotate RuleService.BaseRules with @(restrict: [{
         'RuleAdmin',
         'RuleCreator',
         'RuleReader',
-        'authenticated-user'
+        'authenticated-user',
+        'RuleM2M'
     ]
 }]);
 
@@ -50,5 +53,6 @@ annotate RuleService.checkForOverdueRules with @(requires: ['RuleAdmin']);
 annotate RuleService.getApplicableRules with @(requires: [
     'RuleReader',
     'RuleAdmin',
-    'RuleCreator'
+    'RuleCreator',
+    'RuleM2M'
 ]);
